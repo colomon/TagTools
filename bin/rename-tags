@@ -1,0 +1,16 @@
+use v6;
+use Audio::Taglib::Simple;
+
+sub MAIN($file, :$title?, :$artist?, :$album?) {
+    my $tags = Audio::Taglib::Simple.new($file);
+    say "$file:";
+    say "    " ~ $tags.title;
+    say "    " ~ $tags.artist;
+    say "    " ~ $tags.album;
+
+    $tags.title = $title if $title;
+    $tags.artist = $artist if $artist;
+    $tags.album = $album if $album;
+
+   $tags.save if $title || $artist || $album;
+}
