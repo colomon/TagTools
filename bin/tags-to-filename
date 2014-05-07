@@ -5,7 +5,6 @@ use Audio::Taglib::Simple;
 
 sub MAIN(*@files) {
     my $track-number-template = '%0' ~ (+@files).chars ~ 'd-';
-    say $track-number-template;
 
     for @files -> $filename {
         my $tags;
