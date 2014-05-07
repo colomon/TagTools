@@ -1,0 +1,25 @@
+#!/usr/bin/env perl6
+
+use v6;
+use Audio::Taglib::Simple;
+
+sub MAIN(*@files) {
+    my $track-number-template = '%0' ~ (+@files).chars ~ 'd-';
+    say $track-number-template;
+
+    for @files -> $filename {
+        my $tags;
+        try {
+            $tags = Audio::Taglib::Simple.new($filename);
+            CATCH { say "Error reading $filename"; next; }
+        }
+        
+        my $title = $tags.title;
+        $title .= subst(/ \s | '?' | "'" | '(' | ')' | '"' | '#' /, "_", :global);
+        $title .= subst(/"&"/, "and", :global);
+        $title .= subst(rx{'/'}, "-", :global);
+
+        my $new-filename = sprintf($track-number-template, $tags.track) ~ $title ~ ".mp3";
+        say "mv " ~ $filename.perl ~ " "  ~ $new-filename;
+    }
+}
