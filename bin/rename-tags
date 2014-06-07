@@ -5,6 +5,8 @@ use Audio::Taglib::Simple;
 
 sub MAIN(*@files, :$title?, :$artist?, :$album?, :$track?) {
     for @files -> $file {
+        print "\n" if $file ne @files[0];
+    
         my $tags = Audio::Taglib::Simple.new($file);
 
         $tags.title = $title if $title;
@@ -13,10 +15,13 @@ sub MAIN(*@files, :$title?, :$artist?, :$album?, :$track?) {
         $tags.track = $track.Int if $track;
 
         say "$file:";
-        say "    " ~ $tags.title;
-        say "    " ~ $tags.artist;
-        say "    " ~ $tags.album;
+        say "    Artist: { $tags.artist }";
+        say "    Album: { $tags.album }";
+        say "    Track Number: { $tags.track }";
+        say "    Title: { $tags.title }";
 
         $tags.save if $title || $artist || $album;
+        
+        CATCH { say "Error working with $file" }
     }
 }

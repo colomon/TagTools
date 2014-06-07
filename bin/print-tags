@@ -7,13 +7,13 @@ sub MAIN(*@files) {
     for @files -> $filename {
         try {
             print "\n" if $filename ne @files[0];
-            say "$filename:";
             
             my $tags = Audio::Taglib::Simple.new($filename);
 
+            say "$filename:";
+            say "    Artist: { $tags.artist }";
             say "    Album: { $tags.album }";
             say "    Track Number: { $tags.track }";
-            say "    Artist: { $tags.artist }";
             say "    Title: { $tags.title }";
 
             CATCH { say "Error reading $filename" }
