@@ -1,6 +1,7 @@
 #!/usr/bin/env perl6
 
 use v6;
+use Audio::Taglib::Simple;
 # use Grammar::Tracer;
 
 grammar session-html {
@@ -47,7 +48,7 @@ class session-html-actions {
     has %.list-items;
     
     method plain-title($/) {
-        make $/.subst(/'&#8217;'/, "'").trim;
+        make $/.subst(/'&#8217;'/, "'", :global).trim;
     }
     
     method anchor($/) {
