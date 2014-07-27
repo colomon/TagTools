@@ -1,8 +1,8 @@
 {
-    "name"        : "colomon::TagTools",
+    "name"        : "colomon::App::TagTools",
     "version"     : "*",
-    "description" : "Some simple scripts for working with MP3 tags",
-    "depends"     : ["Audio::TagLib::Simple"],
+    "description" : "Scripts for manipulating MP3 tags",
+    "depends"     : ["Audio::Taglib::Simple"],
     "source-type"   : "git",
-    "source-url"    : "git://colomon@benoit/TagTools.git"
+    "source-url"    : "git://github.com/colomon/TagTools.git"
 }
