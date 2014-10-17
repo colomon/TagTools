@@ -32,6 +32,6 @@ sub MAIN(*@files) {
         $title .= subst(/ <:!ASCII> /, "_", :global);
 
         my $new-filename = sprintf($track-number-template, $tags.track) ~ $title ~ ".mp3";
-        say "mv " ~ $filename.perl.subst('\\&', '\&', :global) ~ " "  ~ $new-filename;
+        say "mv " ~ $filename.perl.subst('\&', '&', :global) ~ " "  ~ $new-filename;
     }
 }
