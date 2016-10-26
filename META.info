@@ -1,4 +1,5 @@
 {
+    "perl"        : "6.*",
     "name"        : "colomon::App::TagTools",
     "version"     : "*",
     "description" : "Scripts for manipulating MP3 tags",
