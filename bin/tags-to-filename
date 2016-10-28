@@ -33,7 +33,6 @@ sub MAIN(*@files) {
         $title .= subst(":", "_-", :global);
         $title .= subst(";", "_-", :global);
         $title .= subst(",", "_-", :global);
-        $title .= subst('*', "_", :global);
 
         my $new-filename = sprintf($track-number-template, $tags.track) ~ $title ~ ".mp3";
         if +@files == 1 && $tags.track == 0 {
