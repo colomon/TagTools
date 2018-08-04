@@ -1,8 +1,19 @@
 {
     "name"        : "colomon::App::TagTools",
-    "version"     : "*",
+    "version"     : "1.0",
     "description" : "Scripts for manipulating MP3 tags",
-    "provides"    : { },
+    "provides"    : {
+        "filename-number-to-track-number": "bin/filename-number-to-track-number",
+        "find-missing-tags" : "bin/find-missing-tags",
+        "fixup-youtube-dl" : "bin/fixup-youtube-dl",
+        "new-track-numbers" : "bin/new-track-numbers",
+        "print-tags" : "bin/print-tags",
+        "rename-tags" : "bin/rename-tags",
+        "simple-tags-from-path" : "bin/simple-tags-from-path",
+        "tags-from-file" : "bin/tags-from-file",
+        "tags-to-filename" : "bin/tags-to-filename",
+        "titles-from-the-session" : "bin/titles-from-the-session"
+    },
     "depends"     : ["Audio::Taglib::Simple"],
     "source-type"   : "git",
     "source-url"    : "git://github.com/colomon/TagTools.git"
