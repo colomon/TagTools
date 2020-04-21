@@ -34,6 +34,9 @@ sub MAIN(*@files) {
         $title .= subst(";", "-", :global);
 
         my $new-filename = sprintf($track-number-template, $tags.track) ~ $title ~ ".mp3";
+        if +@files == 1 && $tags.track == 0 {
+            $new-filename = $title ~ ".mp3"; # skip track number if its 0 and there's only one track
+        }
 
         my $original-filename = $filename.perl;
         $original-filename .= subst(/'\%'/, "%", :global);
