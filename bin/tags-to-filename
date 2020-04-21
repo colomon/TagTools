@@ -14,7 +14,7 @@ sub MAIN(*@files) {
         }
         
         my $title = $tags.title;
-        $title .= subst(/ \s | '?' | "'" | '(' | ')' | '"' | '#' | '[' | ']' /, "_", :global);
+        $title .= subst(/ \s | '?' | "'" | '*' | '^' | '(' | ')' | '"' | '#' | '[' | ']' /, "_", :global);
 
         $title .= subst(/<[àáâäaãåā]>/, "a", :global);
         $title .= subst(/<[èéêëēėę]>/, "e", :global);
