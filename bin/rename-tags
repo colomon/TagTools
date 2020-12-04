@@ -5,7 +5,7 @@ use Audio::Taglib::Simple;
 
 @*ARGS = |@*ARGS.grep(/^"--"/), |@*ARGS.grep({ $_ !~~ /^"--"/ });
 
-sub MAIN(*@files, :$title?, :$artist?, :$album?, :$track?) {
+sub MAIN(*@files, :$title?, :$artist?, :$album?, :$track?, :$year?) {
     for @files -> $file {
         print "\n" if $file ne @files[0];
     
@@ -15,14 +15,16 @@ sub MAIN(*@files, :$title?, :$artist?, :$album?, :$track?) {
         $tags.artist = $artist if $artist;
         $tags.album = $album if $album;
         $tags.track = $track.Int if $track;
+        $tags.year = $year.Int if $year;
 
         say "$file:";
         say "    Artist: { $tags.artist }";
         say "    Album: { $tags.album }";
         say "    Track Number: { $tags.track }";
         say "    Title: { $tags.title }";
+        say "    Year: { $tags.year }";
 
-        $tags.save if $title || $artist || $album || $track;
+        $tags.save if $title || $artist || $album || $track || $year;
         
         CATCH { say "Error working with $file" }
     }
