@@ -1,6 +1,6 @@
 {
     "name"        : "colomon::App::TagTools",
-    "version"     : "*",
+    "version"     : "0.5.0",
     "description" : "Scripts for manipulating MP3 tags",
     "provides"    : { },
     "depends"     : ["Audio::Taglib::Simple"],
