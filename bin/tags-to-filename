@@ -3,6 +3,10 @@
 use v6;
 use Audio::Taglib::Simple;
 
+my %*SUB-MAIN-OPTS =
+  :named-anywhere,    # allow named variables at any location 
+;
+
 sub sanitize-for-filename($string) {
     my $title = $string;
     $title .= subst(/ \s | '?' | "'" | '*' | '^' | '(' | ')' | '"' | '#' | '[' | ']' /, "_", :global);
